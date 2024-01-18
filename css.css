@@ -1,0 +1,280 @@
+@font-face {
+  font-family: 'Polestar';
+  src: url(font/Polestar_unica77.ttf);
+
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 250 900;
+  line-height: 1,5; 
+}
+
+@font-face{
+	font-family: 'Unicaebold';
+src: url(font/NeueHaasUnica-ExtraBold.ttf)
+}
+
+@font-face{
+	font-family: 'Grotesk';
+	src: url(Font/NeuehaasDisplay.ttf)
+}
+
+@font-face{
+	font-family: 'Hoveritalic';
+	src: url(Font/NeueHaasUnicaExtraBoldItalic.ttf)
+}
+:root {
+	/* Je kan variabelen gebruiken. Handig! */
+	--page-background: hsl(0, 0%, 0%);
+	--body-color: hsl(0, 0%, 100%);
+	--highlight-color: hsl(30,50%,40%);
+	--fold: 35; /* hoe breed mag een paragraaf zijn */
+	--ratio: 1.414;
+}
+
+ol {
+	font-family: "Polestar"; 
+}
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+em{
+	font-style: italic; 
+}
+
+/* BASICS */
+html {
+	/* 
+	Kies hier zelf een passende font-stack. Deze is zeker niet goed genoeg!
+	https://modernfontstacks.com/
+	*/
+	font-family: 'polestar', Helvetica, sans-serif 
+}
+body {
+	margin: 0;
+	font-size: 1.4rem;
+	background-image: url(Styles/backgroundblanket.jpg);
+	Background-repeat: repeat-y;
+	background-size: cover;
+	cursor: url('Styles/Innovatie_cursor.png'), auto;
+	font-family: "Polestar", Helvetica, sans-serif; 
+}
+
+.onderstrepen:hover{
+	text-decoration: underline; 
+}
+
+.Grijstover{
+	filter: grayscale(100%); /* Maak de afbeelding grijs van oorsprong */
+    transition: filter 0.3s; /* Voeg een overgang toe voor soepele kleurverandering */
+}
+
+.Grijstover:hover{
+	filter: grayscale(0%); /* Verwijder de grijsschaalfilter bij hover om de ware kleur te tonen */
+}
+
+.kleur{
+	color:#FF914D; 
+}
+
+/* LAYOUT */
+main,
+figcaption {
+	display: grid;
+	grid-template-columns: minmax(1em,auto) 1fr minmax(1em,auto);
+}
+:where(main, figcaption) > * {
+	/* je kan ook rekenen met CSS. 
+	Hier doen we de fold x de standaard fontgrootte */
+	max-width: calc(var(--fold) * 1rem);
+	width: 100%;
+	margin: 0 auto 1rem;
+	grid-column-start: 2;
+}
+
+ol{
+	color:#ffffff;
+}
+
+.first-item{
+	margin-bottom: 1em; 
+}
+/* DEFAULT INLINE STYLES */
+
+p  {
+	font-family: "Polestar"; 
+	color: white;
+	line-height: 1.4em;
+}
+h1 {
+	/* 
+	vw = viewport width: 
+	grootte is afhankelijk van de breedte van het scherm.
+	vh = viewport height.
+	vmin = viewport height, óf width, degene die kleiner is.
+	vmax = dat kan je zelf bedenken
+	
+	clamp() heeft drie waardes:
+	1. niet kleiner dan
+	2. idealiter
+	3. maximale grootte
+	 */
+	font-family: "Unicaebold";  
+	/*font-size: clamp(2em,10vw,5em);*/
+	font-size: 2.4em;
+	line-height: 1; /* lager cijfer als het font groter is. */
+	color: white;
+	margin-bottom: 1em;
+	grid-column-start: 1;
+	grid-column-end: -1;
+	margin-top: 10vh;
+}
+marquee{
+	margin-top: 1em;
+	color:#FF914D; 
+}
+h2 {
+	font-family: "Unicaebold", Helvetica, sans-serif; 
+	font-size: calc( var(--ratio) *  var(--ratio) * var(--ratio) * 1rem );
+	line-height: 1; /* lager cijfer als het font groter is. */
+	font-weight: normal; /* bold, normal */
+	color: White;
+	margin-top: 2rem;
+	transition: font-family 0,3s; 
+}
+  
+h2:hover{
+	font-family: "Hoveritalic"; 
+}
+h3 {
+	font-size: calc( var(--ratio) * var(--ratio) * 1rem );
+	font-weight: normal; /* bold, normal */
+	font-family: "Polestar";
+	color:#ffffff;
+	letter-spacing: 0.4rem;
+	margin-top: 1rem; 
+	margin-bottom: 2rem; 
+	transition: font-family 0.3s; 
+}
+
+h3:hover{
+font-family: "Grotesk", sans-serif; 
+}
+	
+/* Een paragraaf die meteen na een H1 staat */
+h1 + p {
+	font-style: italic; /* italic, normal */
+}
+h1 + p::first-line {
+	font-variant: bold;
+}
+h1 + p em {
+	font-style: normal;
+}
+.animatie-h2 {
+	color: #ffffff; /* Stel de standaard tekstkleur in */
+	transition: color 0.3s ease; /* Voeg een overgang toe voor de kleur met een vertraging van 0.3 seconden */
+  }
+  .animatie-h2:hover {
+	color: #FF914D; /* Verander de tekstkleur naar rood wanneer de muis eroverheen gaat */
+  }
+
+
+figure {
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+figcaption i {
+	display: inline-block;
+}
+figcaption i::before {
+	content: '© ';
+}
+
+marquee{
+	font-size: 2em;
+	font-family: "Polestar";
+	Display: flex; 
+}
+marquee span{
+	margin: 0 1em; 
+}
+
+blockquote {
+	max-width: calc(var(--fold) * .7em);
+	font-size: clamp(1em, 4vw, 1.4em);
+	margin: 1em auto 2em;
+	padding: 0 1em;
+	font-style: italic;
+	font-family: 'polestar'; 
+
+}
+
+.header{
+	text-align: center;
+	padding: 100px 100px;
+	background-color: transparent;
+	color: #FF914D;
+	overflow: hidden; 
+	
+  }
+  
+  .animated-text{
+	font-size: 64px;
+	font-family: 'Polestar';
+	letter-spacing: 0;
+	opacity: 0;
+	position: relative;
+	animation: fly-in-out 5s ease infinite;
+	
+  }
+  
+  .animated-text span {
+	display: inline-block;
+	transform: translateX(-100%);
+	animation: letter-fade 0.5s ease forwards; 
+  }
+  
+  @keyframes fly-in-out{
+	0% {
+	  opacity: 0;
+	  transform: translateX(-100%);
+	}
+	35% {
+	  opacity: 1;
+	  transform: translateX(0);    
+	  }
+	65% {
+	  opacity: 1;
+	  transform: translateX(0);
+	  }
+	100%{
+	  opacity: 0;
+	  transform: translateX(100%);
+	   }
+	}
+  
+  @keyframes letter-fade {
+	to{
+	  transform: translateX(0);
+	  opacity: 1; 
+	}
+  }
+
+
+.groot {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	max-width: 80vw;
+	margin-left: 5;
+	margin-right: 5;
+	text-align: center; 
+}
+.groot img {
+	max-width: 100%;
+}
+
+
+
+
